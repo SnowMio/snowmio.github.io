@@ -1,0 +1,93 @@
+<h1>SnowMio Studios C Language Coding Style Guide</h1>
+
+<p><strong>Version</strong>: First Revised Draft<br/><strong>Revision Date</strong>: 2024/11/02</p>
+
+<h2>1. Naming Conventions</h2>
+
+<h3>1.1 Variable Naming</h3>
+
+<ul><li>Use camelCase for variable names (e.g., <code>itIsAnExampleName</code>).</li><li>Variable names should be clear and descriptive, avoiding abbreviations (except widely accepted ones like <code>id</code>, <code>temp</code>).</li><li>Keep local variable names concise and descriptive. For loop variables, single letters like <code>i</code>, <code>j</code>, etc., are acceptable, but maintain consistency and clarity, especially in nested loops.</li></ul>
+
+<h3>1.2 Constant Naming</h3>
+
+<ul><li>Use uppercase letters with underscores to separate words (e.g., <code>MAX_BUFFER_SIZE</code>).</li><li>Define constants with <code>const</code> or <code>#define</code> and place them at the beginning of the file or function definition to avoid &quot;magic numbers&quot; in the code.</li></ul>
+
+<h3>1.3 Function Naming</h3>
+
+<ul><li>Use camelCase for function names to maintain consistency with variable naming.</li><li>Function names should ideally include verbs to clarify their purpose, e.g., <code>readFile()</code>, <code>calculateSum()</code>.</li></ul>
+
+<h2>2. Commenting Guidelines</h2>
+
+<h3>2.1 Comment Style</h3>
+
+<ul><li>Use <code>/* */</code> for both single-line and multi-line comments, avoiding <code>//</code>.</li></ul>
+
+<h3>2.2 Comment Content</h3>
+
+<ul><li>Add comments above definitions for variables or functions that aren’t self-explanatory.</li><li>Each function should have a header comment that describes its purpose, input parameters, return values, and possible error handling.</li><li>Provide detailed comments for complex code blocks (e.g., algorithm implementations) to aid understanding.</li><li><strong>Comment Example:</strong>
+<code>c
+/* Calculates and returns the sum of two integers */
+int calculateSum(int a, int b) {
+  return a + b;
+}
+</code></li></ul>
+
+<h3>2.3 Special Comments</h3>
+
+<ul><li><strong>TODO</strong> comments: Use <code>/* TODO: describe task */</code> to mark incomplete code.</li><li><strong>FIXME</strong> comments: Use <code>/* FIXME: describe issue */</code> to mark known issues that need fixing.</li></ul>
+
+<h2>3. Code Structure and Formatting</h2>
+
+<h3>3.1 Indentation and Spacing</h3>
+
+<ul><li>Use 4 spaces for indentation, avoiding tabs.</li><li>Leave spaces around operators (e.g., <code>a + b</code>).</li><li>Add a space after parentheses in functions, conditionals, and loops for readability.</li></ul>
+
+<h3>3.2 Brace Placement</h3>
+
+<ul><li>Place braces on a new line for all code blocks (e.g., <code>if</code>, <code>for</code>, <code>while</code>, <code>switch</code>).</li><li><p>Use braces for single-statement code blocks to improve consistency and maintainability.</p><p><code>c
+if (condition) {
+  /* code block */
+}
+</code></p></li></ul>
+
+<h3>3.3 Function Length Limit</h3>
+
+<ul><li>Limit functions to 50 lines of code. If a function exceeds this limit, consider breaking it into smaller functions to improve readability and maintainability.</li></ul>
+
+<h2>4. File Structure</h2>
+
+<h3>4.1 Header Files</h3>
+
+<ul><li><p>Include an include guard in each header file to prevent multiple inclusions. Use the following format:
+<code></code>`c
+#ifndef FILE<em>NAME</em>H
+#define FILE<em>NAME</em>H</p><p>/<em> code </em>/</p><p>#endif /* FILE<em>NAME</em>H */
+<code></code>`</p></li></ul>
+
+<h3>4.2 File Organization</h3>
+
+<ul><li>Organize files by modules, with each module having its own file. Place common functions and variable definitions in separate header files.</li><li><code>.c</code> files should contain implementation code only, while <code>.h</code> files should contain declarations and necessary comments.</li></ul>
+
+<h3>4.3 Include Order</h3>
+
+<ul><li>Include header files in the following order:<ol><li>Project-specific header files.</li><li>Third-party library header files.</li><li>Standard C library header files.</li></ol></li></ul>
+
+<h2>5. Error Handling</h2>
+
+<h3>5.1 Error Return Values</h3>
+
+<ul><li>Functions should handle all potential errors and return appropriate error codes (e.g., <code>-1</code> or <code>NULL</code>), with each return condition documented in the function header comments.</li><li>For pointer-related operations, return a null pointer (<code>NULL</code>) to indicate errors.</li></ul>
+
+<h3>5.2 Error Message Output</h3>
+
+<ul><li>Use a consistent error output method (e.g., <code>fprintf(stderr, ...)</code>) and include detailed error information to assist in debugging.</li></ul>
+
+<h2>6. Code Quality</h2>
+
+<h3>6.1 Avoid Hardcoding</h3>
+
+<ul><li>Define constants with <code>const</code> or <code>#define</code> to avoid &quot;magic numbers&quot; in the code.</li><li>Use custom data types or enumerations to enhance readability.</li></ul>
+
+<h3>6.2 Memory Management</h3>
+
+<ul><li>Free dynamically allocated memory when it is no longer needed to prevent memory leaks.</li><li>Avoid unnecessary dynamic memory allocation when possible; prefer stack memory where applicable.</li></ul>
